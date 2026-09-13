@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Eye Movement Observation</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="container">
+  <header>
+    <h1>Eye Movement Observation</h1>
+    <p class="subtitle">Webcam-based, non-diagnostic prototype</p>
+  </header>
+
+  <section class="notice">
+    <strong>Important:</strong> This prototype records webcam-derived measurements such as
+    eyelid position, gaze direction, gaze stability and head movement. It does not diagnose
+    myasthenia gravis or any other condition. The requested clinical signs are presented only
+    as observational categories and require qualified clinical assessment.
+  </section>
+
+  <section id="setup" class="card">
+    <h2>Before you begin</h2>
+    <ul>
+      <li>Use a well-lit room and keep your face clearly visible.</li>
+      <li>Keep the camera at approximately eye level.</li>
+      <li>Keep your head reasonably still unless the instruction says otherwise.</li>
+      <li>Remove sunglasses and anything covering the eyes.</li>
+      <li>Stop if you become uncomfortable, dizzy, or develop visual discomfort.</li>
+    </ul>
+    <button id="startBtn">Start camera</button>
+    <p id="cameraStatus" class="muted"></p>
+  </section>
+
+  <section id="testArea" class="card hidden">
+    <div class="videoWrap">
+      <video id="video" autoplay playsinline muted></video>
+      <canvas id="overlay"></canvas>
+      <div id="target" class="target"></div>
+    </div>
+
+    <div class="testInfo">
+      <p id="progress"></p>
+      <h2 id="testName"></h2>
+      <p id="instruction"></p>
+      <div class="timer" id="timer">--</div>
+      <div class="buttons">
+        <button id="beginTestBtn">Begin test</button>
+        <button id="stopBtn" class="secondary">Stop session</button>
+      </div>
+      <p id="liveStatus" class="muted"></p>
+    </div>
+  </section>
+
+  <section id="doneArea" class="card hidden">
+    <h2>Session complete</h2>
+    <p>Your measurements have been summarized on the results page.</p>
+    <button id="resultsBtn">View summary</button>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.22/vision_bundle.mjs" type="module"></script>
+<script type="module" src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Observation Summary</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="container">
+  <header>
+    <h1>Observation Summary</h1>
+    <p class="subtitle">Measurements from the completed webcam session</p>
+  </header>
+
+  <section class="notice">
+    <strong>Not a diagnosis.</strong> “Observed” means the prototype detected a predefined
+    measurement pattern. “Not observed” means that pattern was not detected by the prototype.
+    Neither result confirms or rules out a medical condition.
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Observed vs not observed</h2>
+      <canvas id="pie"></canvas>
+      <div id="pieLegend"></div>
+    </div>
+
+    <div class="card">
+      <h2>Session statistics</h2>
+      <div id="stats"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Requested observation categories</h2>
+    <div id="table"></div>
+  </section>
+
+  <section class="card">
+    <h2>Plain-language summary</h2>
+    <p id="summary"></p>
+    <p class="muted">
+      If this screening is being used because of symptoms, discuss the symptoms and these
+      observations with a qualified healthcare professional. Seek urgent medical attention
+      for severe or rapidly worsening symptoms.
+    </p>
+    <button onclick="location.href='/'">Run another session</button>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='results.js') }}"></script>
+</body>
+</html>
