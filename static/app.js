@@ -32,8 +32,8 @@ async function initLandmarker(){
   });
 }
 
-35  startBtn.addEventListener("click", async ()=>{
-36    try {
+startBtn.addEventListener("click", async ()=>{
+  try {
       console.log("Start camera clicked");
     statusEl.textContent="Requesting camera permission…";
     stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user",width:{ideal:1280},height:{ideal:720}},audio:false});
@@ -57,8 +57,8 @@ function showTest(){
   liveStatus.textContent="Press Begin test when ready.";
 }
 
-beginBtn.onclick=()=>runTest();
-stopBtn.onclick=()=>finish();
+beginBtn.addEventListener("click", runTest);
+stopBtn.addEventListener("click", finish);
 
 function runTest(){
   if(running)return; running=true; beginBtn.disabled=true;
@@ -141,4 +141,6 @@ function finish(){
   localStorage.setItem("eyeObservationSession",JSON.stringify(session));
   area.classList.add("hidden");done.classList.remove("hidden");
 }
-document.getElementById("resultsBtn").onclick=()=>location.href="/results";
+document.getElementById("resultsBtn").addEventListener("click", () => {
+   location.href="/results";
+});
