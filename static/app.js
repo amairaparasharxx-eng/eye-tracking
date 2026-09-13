@@ -32,8 +32,9 @@ async function initLandmarker(){
   });
 }
 
-startBtn.onclick=async()=>{
-  try{
+35  startBtn.addEventListener("click", async ()=>{
+36    try {
+      console.log("Start camera clicked");
     statusEl.textContent="Requesting camera permission…";
     stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user",width:{ideal:1280},height:{ideal:720}},audio:false});
     video.srcObject=stream;
