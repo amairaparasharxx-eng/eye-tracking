@@ -46,7 +46,7 @@ startBtn.addEventListener("click", async ()=>{
   }catch(e){
     statusEl.textContent="Camera/model setup failed: "+e.message;
   }
-};
+target.style.left="50%"; target.style.top="50%";
 
 function showTest(){
   const t=TESTS[testIndex];
